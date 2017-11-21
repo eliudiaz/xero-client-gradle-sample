@@ -1,0 +1,42 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.8.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+group = 'io.edcracken'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://raw.github.com/XeroAPI/Xero-Java/mvn-repo/'
+    }
+    maven {
+        url 'https://raw.github.com/XeroAPI/XeroAPI-Schemas/mvn-repo/'
+    }
+}
+
+
+dependencies {
+    compile 'org.glassfish.jaxb:jaxb-runtime:2.2.10-b140310.1920'
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile("com.xero:xero-java-sdk:0.6.2")
+    compile("javax.xml.bind:jaxb-api:2.2.11")
+    compile('com.sun.xml.bind:jaxb-impl:2.2.11')
+    compile("com.xero:xero-java-sdk:0.6.2")
+    runtime('com.h2database:h2')
+    compileOnly('org.projectlombok:lombok')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
